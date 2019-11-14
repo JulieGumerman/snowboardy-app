@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+.mntn-form {
+  border: red 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+
+  input {
+    width: 50%;
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px green solid;
+}

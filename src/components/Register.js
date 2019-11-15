@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Register = () => {
+const Register = (props) => {
 
     const [newUser, setNewUser ] = useState({ username: "", password: ""});
 
     const handleChange = e => {
         const {name, value} = e.target;
         setNewUser({...newUser, [name]: value})
-        console.log(newUser);
 
     }
 
@@ -18,7 +17,7 @@ const Register = () => {
         console.log("HandleSubmitFunctionWHeeee", creds);
         axios.post("https://snowboardy-life.herokuapp.com/api/register", creds)
             .then(user => {
-                console.log("Hello from inside handleSubmit then statement")
+                props.history.push("/")
             })
             .catch(err => {
                 console.log(err)

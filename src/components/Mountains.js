@@ -14,7 +14,7 @@ const Mountains = () => {
                 <input 
                     placeholder="description"
                 />
-                <button>Submit</button>
+                <button className="mntn-button">Submit</button>
             </form>
         </div>
     );

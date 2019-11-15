@@ -9,8 +9,8 @@ import Mountains from "./components/Mountains";
 function App() {
   return (
     <div className="App">
-      <h1>Hey from the App component. </h1>
-      <Route exact path="/login" component={Login}/>
+      <h1>So many mountains, so little time... </h1>
+      <Route exact path="/" component={Login}/>
       <Route exact path="/register" component={Register} />
       <Route path="/mountains" component={Mountains} />
     </div>

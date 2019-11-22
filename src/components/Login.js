@@ -8,14 +8,15 @@ const Login = props => {
     const handleChange = e => {
         const { name, value } = e.target;
         setUser({...user, [name]: value});
-        console.log(user);
     }
 
     const handleSubmit = (e, creds) => {
         e.preventDefault();
-        console.log("CREDSS!!!!", creds);
         axios.post("https://snowboardy-life.herokuapp.com/api/login", creds)
-            .then(user => props.history.push("/mountains"))
+            .then(res => {
+                localStorage.setItem("token", res.data.token);
+                props.history.push("/mountains")
+            })
             .catch(err => console.log(err))
     }
 

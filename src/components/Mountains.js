@@ -5,38 +5,69 @@ import MountainCard from "./MountainCard";
 const Mountains = () => {
 
     const [mountains, setMountains] = useState([]);
+    const [newMountain, setNewMountain] = useState({mountain_name: "", nearest_town: "", description: ""});
 
- 
 
-    useEffect(() => {
+    //the get request
+
+    const getMountains = () => {
         axiosWithAuth().get("mountains/")
             .then(res => {
-                console.log(res);
                 setMountains(res.data);
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err))        
+    }
+
+    useEffect(() => {
+        getMountains();
     }, []);
 
-    console.log("MOUNTAINS!!!", mountains);
+    //the post request
+
+    const handleChange = e => {
+        const {name, value} = e.target;
+        setNewMountain({...newMountain, [name]: value})
+    }
+
+    const handleSubmit = (e, mntn) => {
+        e.preventDefault();
+        axiosWithAuth().post("mountains/", mntn)
+            .then(res => {
+                getMountains();
+            })
+            .catch(err => console.log(err))
+    }
+
+
+
 
 
     return (
         <div className="content-wrapper">
             <h3>I do luvv dose mountains!!!</h3>
-            <form className="mntn-form">
+            <form className="mntn-form" onSubmit={(e) => handleSubmit(e, newMountain)}>
                 <input 
                     placeholder="mountain name"
+                    name="mountain_name"
+                    value={newMountain.mountain_name}
+                    onChange={handleChange}
                 />
                 <input 
                     placeholder="nearest town"
+                    name="nearest_town"
+                    value={newMountain.nearest_town}
+                    onChange={handleChange}
                 />
                 <input 
                     placeholder="description"
+                    name="description"
+                    value={newMountain.description}
+                    onChange={handleChange}
                 />
                 <button className="mntn-button">Submit</button>
             </form>
 
-            <div>
+            <div className="card-container">
                 {
                     mountains.map(mountain => <MountainCard key={mountain.id} mountain={mountain}/>)
                 }

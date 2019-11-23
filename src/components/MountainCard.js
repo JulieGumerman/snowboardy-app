@@ -6,7 +6,9 @@ const MountainCard = props => {
             <h2>{props.mountain.mountain_name}</h2>
             <h4>{props.mountain.nearest_town}</h4>
             <p>{props.mountain.description}</p>
-            <i class="far fa-trash-alt"></i>
+            <button onClick={() => props.deleteMountain(props.mountain.id)}>
+                <i class="far fa-trash-alt"></i>
+            </button>
         </div>
     );
 }

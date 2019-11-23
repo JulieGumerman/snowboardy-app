@@ -39,7 +39,15 @@ const Mountains = () => {
     }
 
 
+    //delete request
 
+    const deleteMountain = (id) => {
+        axiosWithAuth().delete(`/mountains/${id}`)
+            .then(mntn => getMountains())
+            .catch(err => {console.log(err)})
+    }
+
+    //what you see
 
 
     return (
@@ -69,7 +77,14 @@ const Mountains = () => {
 
             <div className="card-container">
                 {
-                    mountains.map(mountain => <MountainCard key={mountain.id} mountain={mountain}/>)
+                    mountains.map(mountain => {
+                    return(
+                        <MountainCard 
+                            key={mountain.id} 
+                            mountain={mountain}
+                            deleteMountain={deleteMountain}
+                        />
+                    )})
                 }
             </div>
         </div>

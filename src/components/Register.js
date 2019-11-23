@@ -26,7 +26,7 @@ const Register = (props) => {
 
     return (
         <div className="content-wrapper">
-            Haii register screen!
+            Register here.
             <form className="log-reg-form" onSubmit={e => handleSubmit(e, newUser)}>
                 <div className="form-holder">
                 <input 
@@ -46,7 +46,7 @@ const Register = (props) => {
                 </div>
                 <button className="log-reg-button">Register</button>
             </form>    
-            <div>Already registered? Go <Link to="/">here</Link></div>
+            <div className="info-text">Already registered? Go <Link to="/">here</Link></div>
         </div>
     );
 }

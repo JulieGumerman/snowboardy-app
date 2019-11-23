@@ -1,6 +1,7 @@
 /***********variables ***************/
 $border: #747a76;
 $contrast: #de6f50;
+$text: #08090e;
 
 /**********mixins************/
 @mixin button-style {
@@ -24,6 +25,9 @@ body {
   height: 100vh;
   background-image: url("./images/powder-day.jpg");
   background-size: cover;  
+  justify-content: center;
+  align-items: center;
+  color: $text;
 }
 .App {
   text-align: center;
@@ -33,8 +37,8 @@ body {
 .content-wrapper {
   display: flex;
   flex-direction: column;
-  border: 1px green solid;
   align-content: center;
+  justify-content: center;
 
 }
 
@@ -50,19 +54,17 @@ input {
 /*********login and register pages******/
 
 .log-reg-form {
-  border: 1px blue solid;
   display: flex;
   justify-content: center;
-  // align-items: center;
+  align-items: center;
   flex-direction: column;
-  width: 60%;
-  margin: 0 auto;
+  width: 100%;
 
-  .form-holder{
-    border: 1px purple solid;
+  .form-holder {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     width: 80%;
 
@@ -77,9 +79,14 @@ input {
     @include button-style;
     width: 50%;
   }
+
+
 }
 
-
+  .info-text {
+    padding-top: 15px;
+    font-weight: bold;
+  }
 /**************mountains page**********/
 .mntn-form {
   border: red 1px solid;
@@ -87,7 +94,7 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 
   input {

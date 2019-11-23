@@ -9,7 +9,8 @@ import Mountains from "./components/Mountains";
 function App() {
   return (
     <div className="App">
-      <h1>So many mountains, so little time... </h1>
+      <h1>So many mountains,</h1>
+      <h1>so little time... </h1>
       <Route exact path="/" component={Login}/>
       <Route exact path="/register" component={Register} />
       <Route path="/mountains" component={Mountains} />

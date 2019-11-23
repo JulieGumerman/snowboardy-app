@@ -52,7 +52,6 @@ const Mountains = () => {
 
     return (
         <div className="content-wrapper">
-            <h3>I do luvv dose mountains!!!</h3>
             <form className="mntn-form" onSubmit={(e) => handleSubmit(e, newMountain)}>
                 <input 
                     placeholder="mountain name"

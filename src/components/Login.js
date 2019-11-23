@@ -22,7 +22,7 @@ const Login = props => {
 
     return (
         <div className="content-wrapper">
-            <h3>Just your friendly neightborhood login page</h3>
+            <h3>Log in here.</h3>
             
                 <form className="log-reg-form" onSubmit={e => handleSubmit(e, user)}>
                     <div className="form-holder">
@@ -42,7 +42,7 @@ const Login = props => {
                     <button className="log-reg-button">Log in</button>
                 </form>   
               
-            <div>No account? Sign up <Link to="/register">here</Link></div>
+            <div className="info-text">No account? Sign up <Link to="/register">here</Link></div>
         </div>
     );
 }

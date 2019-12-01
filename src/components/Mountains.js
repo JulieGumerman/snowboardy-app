@@ -36,6 +36,7 @@ const Mountains = () => {
                 getMountains();
             })
             .catch(err => console.log(err))
+        setNewMountain({mountain_name: "", nearest_town: "", description: ""})
     }
 
 

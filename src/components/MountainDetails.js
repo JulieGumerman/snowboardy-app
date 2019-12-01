@@ -3,7 +3,6 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
 const MountainDetails = ({match}) => {
-    console.log("from mountain details page")
 
     const [mountain, setMountain] = useState({})
     const id = match.params.id;
@@ -11,7 +10,6 @@ const MountainDetails = ({match}) => {
     const getMountainById = (id) => {
         axiosWithAuth().get(`/mountains/${id}`)
         .then(res => {
-            console.log(res.data);
             setMountain(res.data);
         })
         .catch(err => console.log(err))

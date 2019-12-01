@@ -14,6 +14,14 @@ $text: #08090e;
 
 }
 
+@mixin card-button {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  border: none;
+}
 
 /*************universal**************/
 body {
@@ -124,4 +132,27 @@ input {
   padding-left: 5px;
   padding-right: 5px;
 }
+
+.button-box {
+
+  display: flex;
+  justify-content: space-around;
+  
+  .delete-button {
+    @include card-button;
+    background: $text;
+    color: white;
+  }
+
+  .see-more {
+    @include card-button;
+    background: $contrast;
+    color: white;
+  }
+
+
+}
+
+
+
 

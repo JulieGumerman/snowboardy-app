@@ -1,5 +1,4 @@
 import React from "react";
-import DeleteButton from "./DeleteButton";
 
 const MountainCard = props => {
     return (
@@ -7,7 +6,19 @@ const MountainCard = props => {
             <h2>{props.mountain.mountain_name}</h2>
             <h4>{props.mountain.nearest_town}</h4>
             <p>{props.mountain.description}</p>
-            <DeleteButton onClick={() => props.deleteMountain(props.mountain.id)}/>
+            <div className="button-box">
+                <button 
+                    className="delete-button" 
+                    onClick={() => props.deleteMountain(props.mountain.id)}
+                >
+                    Delete
+                </button>
+                <button
+                    className="see-more"
+                >
+                    See more
+                </button>
+            </div>
         </div>
     );
 }

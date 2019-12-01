@@ -137,35 +137,57 @@ input {
   display: flex;
   justify-content: space-around;
 
-  .delete-button {
-    @include card-button;
-    background: $text;
-    color: white;
-  }
-
-  .see-more {
-    @include card-button;
-    background: $contrast;
-    color: white;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-
-    .see-more-link {
-      text-decoration: none;
-      color: white;
-    }
-  }
-
 
 }
 
-.trial {
+.delete-button {
+  @include card-button;
+  background: $text;
+  color: white;
+}
+
+.see-more {
+  @include card-button;
+  background: $contrast;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  .see-more-link {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+//*************description of mountain*************
+.about-mountain {
   margin: 0 auto;
-  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 5px;
+  border: 3px solid $border;
   width: 70%;
   padding: 30px;
+  flex-direction: column;
+}
+
+.mountain-details-page-link {
+  height: 50px;
+  padding: 5px;
+}
+
+
+
+.feature-coming {
+  background: $border;
+  color: white;
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 

@@ -1,11 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { Link } from "react-router-dom";
 
-const MountainDetails = (props) => {
+const MountainDetails = ({match}) => {
     console.log("from mountain details page")
+
+    const [mountain, setMountain] = useState({})
+    const id = match.params.id;
+
+    const getMountainById = (id) => {
+        axiosWithAuth().get(`/mountains/${id}`)
+        .then(res => {
+            console.log(res.data);
+            setMountain(res.data);
+        })
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getMountainById(id);
+    }, [])
+
     return (
-        <div className="trial">
-            <h3>Mountain details page: coming soon!!!</h3>
-            <p>Please come back in a few days.</p>
+        <div className="about-mountain">
+            <h2>{mountain.mountain_name}</h2>
+            <h3>Nearest town: {mountain.nearest_town}</h3>
+            <p>{mountain.description}</p>
+            <button className="see-more mountain-details-page-link">
+                <Link 
+                    to="/mountains"
+                    className="see-more-link"
+                >
+                    Return to Mountains
+                </Link>
+            </button>
+
+            <div className="feature-coming">
+                <h4>"Comments" functionality coming soon!</h4>
+            </div>
         </div>
     );
 }

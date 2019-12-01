@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MountainCard = props => {
     return (
@@ -13,10 +14,13 @@ const MountainCard = props => {
                 >
                     Delete
                 </button>
-                <button
-                    className="see-more"
-                >
-                    See more
+                <button className="see-more">
+                    <Link 
+                        className="see-more-link"
+                        to={`mountains/${props.mountain.id}`}
+                    >
+                        See more
+                    </Link>
                 </button>
             </div>
         </div>

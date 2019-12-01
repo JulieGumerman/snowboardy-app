@@ -5,6 +5,8 @@ import './App.scss';
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Mountains from "./components/Mountains";
+import { PrivateRoute } from "./components/PrivateRoute";
+import MountainDetails from "./components/MountainDetails";
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
       <h1>so little time... </h1>
       <Route exact path="/" component={Login}/>
       <Route exact path="/register" component={Register} />
-      <Route path="/mountains" component={Mountains} />
+      <PrivateRoute exact path="/mountains" component={Mountains} />
+      <PrivateRoute path={`mountains/:id` } component={MountainDetails}/>
     </div>
   );
 }

@@ -34,7 +34,7 @@ body {
   background-image: url("./images/powder-day.jpg");
   background-size: cover;  
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   color: $text;
 }
 .App {
@@ -97,7 +97,6 @@ input {
   }
 /**************mountains page**********/
 .mntn-form {
-  border: red 1px solid;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,12 +105,13 @@ input {
   margin: 0 auto;
 
   input {
-    width: 50%;
+    width: 40%;
   }
 
   .mntn-button {
     @include button-style;
-    width: 50%;
+    width: 20%;
+    margin-top: 10px;
   }
 }
 
@@ -137,7 +137,7 @@ input {
 
   display: flex;
   justify-content: space-around;
-  
+
   .delete-button {
     @include card-button;
     background: $text;
@@ -148,11 +148,22 @@ input {
     @include card-button;
     background: $contrast;
     color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    .see-more-link {
+      text-decoration: none;
+      color: white;
+    }
   }
 
 
 }
 
-
+.trial {
+  background: red;
+}
 
 

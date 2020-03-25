@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Formik } from "formik";
 
 const Login = props => {
     const [user, setUser] = useState({ username: "", password: ""})
@@ -23,7 +24,7 @@ const Login = props => {
     return (
         <div className="content-wrapper">
             <h3>Log in here.</h3>
-            
+                <Formik>
                 <form className="log-reg-form" onSubmit={e => handleSubmit(e, user)}>
                     <div className="form-holder">
                      <input 
@@ -41,7 +42,7 @@ const Login = props => {
                     </div>  
                     <button className="log-reg-button">Log in</button>
                 </form>   
-              
+                </Formik>  
             <div className="info-text">No account? Sign up <Link to="/register">here</Link></div>
         </div>
     );

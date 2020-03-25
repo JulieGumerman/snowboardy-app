@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Formik } from "formik";
 
 const Register = (props) => {
 
@@ -12,6 +13,8 @@ const Register = (props) => {
 
     }
 
+    let registration_error = "NONE";
+
     const handleSubmit = (e, creds) => {
         e.preventDefault();
         console.log("HandleSubmitFunctionWHeeee", creds);
@@ -21,12 +24,14 @@ const Register = (props) => {
             })
             .catch(err => {
                 console.log(err)
+                registration_error = "YES"
             })
     }
 
     return (
         <div className="content-wrapper">
             Register here.
+            <Formik>
             <form className="log-reg-form" onSubmit={e => handleSubmit(e, newUser)}>
                 <div className="form-holder">
                 <input 
@@ -45,7 +50,8 @@ const Register = (props) => {
                 />
                 </div>
                 <button className="log-reg-button">Register</button>
-            </form>    
+            </form>
+            </Formik>    
             <div className="info-text">Already registered? Go <Link to="/">here</Link></div>
         </div>
     );

@@ -36,6 +36,14 @@ const MountainDetails = ({match}) => {
             <div className="feature-coming">
                 <h4>"Comments" functionality coming soon!</h4>
             </div>
+            <div>
+                <input 
+                    placeholder="Been here? Tell us!"
+                />
+                <button>
+                    Add comment to section.
+                </button>
+            </div>
         </div>
     );
 }

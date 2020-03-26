@@ -71,26 +71,6 @@ const Register = (props) => {
                         <button className="log-reg-button" type="submit" disabled={isSubmitting}>Register</button>
                     </form>
                 )}
-            {/* <form className="log-reg-form" onSubmit={e => handleSubmit(e, newUser)}>
-                <div className="form-holder">
-                <input 
-                    placeholder="username"
-                    name="username"
-                    value={newUser.username}
-                    type="text"
-                    onChange={handleChange}
-                />
-                <input 
-                    placeholder="password"
-                    type="password"
-                    name="password"
-                    value={newUser.password}
-                    onChange={handleChange}
-                />
-                </div>
-                <button className="log-reg-button">Register</button>
-            </form> */}
-
             </Formik>    
             <div className="info-text">Already registered? Go <Link to="/">here</Link></div>
         </div>

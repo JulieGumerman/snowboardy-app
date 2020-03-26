@@ -46,6 +46,15 @@ const Register = (props) => {
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2));
                     }, 400)
+                    console.log("HandleSubmitFunctionWHeeee", values);
+                    axios.post("https://snowboardy-life.herokuapp.com/api/register", values)
+                        .then(user => {
+                            props.history.push("/")
+                            console.log(values)
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        })                    
                 }}
             >
                 {({values, errors, touched, handleChange, handleSubmit, isSubmitting}) => (

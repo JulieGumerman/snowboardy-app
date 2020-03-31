@@ -109,7 +109,7 @@ const MountainDetails = ({match, location}) => {
                     </button>
                     </form> */}
                     {({values, errors, touched, handleChange, handleSubmit, isSubmitting}) => (
-                        <form>
+                        <form onSubmit={handleSubmit}>
                         <input 
                             placeholder="Been here? Tell us!"
                             name="comment"

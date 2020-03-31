@@ -3,7 +3,6 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
 const MountainDetails = ({match}) => {
-
     const mountain_id = match.params.id;
 
     const [mountain, setMountain] = useState({})

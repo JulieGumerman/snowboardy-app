@@ -18,6 +18,7 @@ const MountainCard = props => {
                     <Link 
                         className="see-more-link"
                         to={`/mountains/${props.mountain.id}`}
+                        currentuser={props.currentuser}
                     >
                         See more
                     </Link>

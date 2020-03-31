@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import MountainCard from "./MountainCard";
 
-const Mountains = () => {
+const Mountains = (props) => {
 
     const [mountains, setMountains] = useState([]);
     const [newMountain, setNewMountain] = useState({mountain_name: "", nearest_town: "", description: ""});
 
+    //console.log("PROPS.HISTORY MOTHERFUCKERS!!!", props.history.location.state.user)
+    const currentuser = props.history.location.state.user
 
     //the get request
 
@@ -83,6 +85,7 @@ const Mountains = () => {
                             key={mountain.id} 
                             mountain={mountain}
                             deleteMountain={deleteMountain}
+                            currentuser={currentuser}
                         />
                     )})
                 }

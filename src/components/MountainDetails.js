@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
+import CommentForm from './CommentForm';
 import { Formik } from "formik";
 
 const MountainDetails = ({match, location}) => {
@@ -8,16 +9,9 @@ const MountainDetails = ({match, location}) => {
     const currentUser = localStorage.getItem("current-user")
     const currentUserObject = JSON.parse(currentUser)
     const mountain_id = match.params.id;
-    console.log("CURRENT USER OBJECT", currentUserObject.id)
 
     const [mountain, setMountain] = useState({})
     const [comments, setComments] = useState([])
-    const [newComment, setNewComment] = useState({
-        'mountain_id': mountain_id, 
-        'user_id': currentUserObject.id, 
-        'comment': ''
-    })
-
 
     const getMountainById = (id) => {
         axiosWithAuth().get(`/mountains/${id}`)
@@ -30,24 +24,12 @@ const MountainDetails = ({match, location}) => {
     const getCommentsForMountain = (mountain_id) => {
         axiosWithAuth().get(`/mountains/${mountain_id}/comments`)
             .then(res => {
-                console.log("COMMENTS", res.data)
                 setComments(res.data)
             })
             .catch(err => {
                 console.log("better luck next time...")
             })
     }
-
-    // const postComment = (e, newComment) => {
-    //     e.preventDefault()
-    //     axiosWithAuth().post(`/comments`, newComment)
-    //         .then(res => {
-    //             console.log("SUCCESS ON THE COMMENT POST")
-    //         })
-    //         .catch(err => {
-    //             console.log("NO GOES IT ON POSTING THE NEW COMMENT")
-    //         })
-    // }
 
 
 
@@ -71,59 +53,22 @@ const MountainDetails = ({match, location}) => {
                 </Link>
             </button>
 
-            <div className="feature-coming">
-                <h4>"Comments" functionality coming soon!</h4>
+            <div>
+                <CommentForm 
+                    mountain_id={mountain_id}
+                    currentUserObject={currentUserObject}
+                />
             </div>
             <div>
-                <Formik
-                    initialValues={{        
-                        mountain_id: mountain_id, 
-                        user_id: currentUserObject.id, 
-                        comment: ''
-                    }}
-                    validate={values => {
-                        const errors = {}
-                        if (!values.comment) {
-                            errors.comment = "Required"
-                        }
-                        return errors
-                    }}
-                    onSubmit={(values, {setSubmitting}) => {
-                        axiosWithAuth().post(`/comments`, values)
-                        .then(res => {
-                            console.log("SUCCESS ON THE COMMENT POST")
-                        })
-                        .catch(err => {
-                            console.log("NO GOES IT ON POSTING THE NEW COMMENT")
-                        })
-                    }}
-                >
-                    {/* <form>
-                    <input 
-                        placeholder="Been here? Tell us!"
-                    />
-                    <button
-                        onClick={e => postComment(e, newComment)}
-                    >
-                        Add comment to section.
-                    </button>
-                    </form> */}
-                    {({values, errors, touched, handleChange, handleSubmit, isSubmitting}) => (
-                        <form onSubmit={handleSubmit}>
-                        <input 
-                            placeholder="Been here? Tell us!"
-                            name="comment"
-                            type="text"
-                            value={values.comment}
-                            onChange={handleChange}
-                        />
-                        {errors.comment && touched.comment && errors.comment}
-                        <button type="submit">
-                            Add comment to section.
-                        </button>
-                        </form>
-                    )}
-                </Formik>
+                <h3>Comments</h3>
+                {comments.map(comment => {
+                    return (
+                        <div key={comment.id}>
+                            <p>{comment.comment}</p>
+                            <p>{comment.username}</p>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     );

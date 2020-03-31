@@ -27,7 +27,6 @@ const Login = props => {
                         axios.post("https://snowboardy-life.herokuapp.com/api/login", values)
                             .then(res => {
                                 localStorage.setItem("token", res.data.token);
-                                //props.history.push("/mountains")
                                 let userInfo = res.data
                                 props.history.push("/mountains", userInfo)
 

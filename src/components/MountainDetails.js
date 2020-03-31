@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const MountainDetails = ({match}) => {
 
     const [mountain, setMountain] = useState({})
+    const [comments, setComments] = useState([])
     const id = match.params.id;
 
     const getMountainById = (id) => {
@@ -15,8 +16,33 @@ const MountainDetails = ({match}) => {
         .catch(err => console.log(err))
     }
 
+    const getCommentsForMountain = (mountain_id) => {
+        axiosWithAuth().get(`/mountains/${mountain_id}/comments`)
+            .then(res => {
+                console.log("COMMENTS", res.data)
+                setComments(res.data)
+            })
+            .catch(err => {
+                console.log("better luck next time...")
+            })
+    }
+
+    const postComment = (newComment) => {
+        axiosWithAuth().post(`/comments`, newComment)
+            .then(res => {
+                console.log("SUCCESS ON THE COMMENT POST")
+            })
+            .catch(err => {
+                console.log("NO GOES IT ON POSTING THE NEW COMMENT")
+            })
+    }
+
+
+
+
     useEffect(() => {
         getMountainById(id);
+        getCommentsForMountain(id);
     }, [])
 
     return (

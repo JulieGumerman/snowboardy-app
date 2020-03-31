@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
+import CommentForm from './CommentForm';
+import CommentCard from './CommentCard';
 
-const MountainDetails = ({match}) => {
+const MountainDetails = ({match, location}) => {
+
+    const currentUser = localStorage.getItem("current-user")
+    const currentUserObject = JSON.parse(currentUser)
+    const mountain_id = match.params.id;
 
     const [mountain, setMountain] = useState({})
-    const id = match.params.id;
+    const [comments, setComments] = useState([])
+
+    console.log("COMMENTY COMMENTY COMMENTS!!!", comments)
 
     const getMountainById = (id) => {
         axiosWithAuth().get(`/mountains/${id}`)
@@ -15,8 +23,22 @@ const MountainDetails = ({match}) => {
         .catch(err => console.log(err))
     }
 
+    const getCommentsForMountain = (mountain_id) => {
+        axiosWithAuth().get(`/mountains/${mountain_id}/comments`)
+            .then(res => {
+                setComments(res.data)
+            })
+            .catch(err => {
+                console.log("better luck next time...")
+            })
+    }
+
+
+
+
     useEffect(() => {
-        getMountainById(id);
+        getMountainById(mountain_id);
+        getCommentsForMountain(mountain_id);
     }, [])
 
     return (
@@ -33,16 +55,20 @@ const MountainDetails = ({match}) => {
                 </Link>
             </button>
 
-            <div className="feature-coming">
-                <h4>"Comments" functionality coming soon!</h4>
-            </div>
+            <CommentForm 
+                mountain_id={mountain_id}
+                currentUserObject={currentUserObject}
+            />
             <div>
-                <input 
-                    placeholder="Been here? Tell us!"
-                />
-                <button>
-                    Add comment to section.
-                </button>
+                <h3>Comments</h3>
+                {comments.map(comment => {
+                    return (
+                        <CommentCard 
+                            key={comment.id}
+                            comment={comment}
+                        />
+                    )
+                })}
             </div>
         </div>
     );

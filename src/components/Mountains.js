@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import MountainCard from "./MountainCard";
 
-const Mountains = () => {
+const Mountains = (props) => {
 
     const [mountains, setMountains] = useState([]);
     const [newMountain, setNewMountain] = useState({mountain_name: "", nearest_town: "", description: ""});
 
+    let currentUser;
 
-    //the get request
+    if (props.history.location.state !== undefined) {
+        currentUser = props.history.location.state.user
+        localStorage.setItem("current-user", JSON.stringify(currentUser))
+
+    }
 
     const getMountains = () => {
         axiosWithAuth().get("mountains/")
@@ -22,7 +27,6 @@ const Mountains = () => {
         getMountains();
     }, []);
 
-    //the post request
 
     const handleChange = e => {
         const {name, value} = e.target;
@@ -83,6 +87,7 @@ const Mountains = () => {
                             key={mountain.id} 
                             mountain={mountain}
                             deleteMountain={deleteMountain}
+                            currentUser={currentUser}
                         />
                     )})
                 }

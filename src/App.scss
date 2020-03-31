@@ -181,13 +181,38 @@ input {
 }
 
 
-
-.feature-coming {
+.comment-form {
   background: $border;
   color: white;
   margin-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  input {
+    width: 80%
+  }
+
+  .comment-button {
+    @include card-button;
+    align-items: center;
+    padding: 5px;
+    margin: 10px;
+    width: 50%;
+    background: $contrast;
+    color: white;
+    margin-bottom: 20px;
+  }
 }
 
 
+/******************comment cards*********************/
+.comment-card {
+  border-bottom: 3px dotted $text;
+  .byline {
+    font-style: italic;
+  }
+}

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const MountainCard = props => {
-    console.log("CURRENT USER???", props.state)
     return (
         <div className="card">
             <h2>{props.mountain.mountain_name}</h2>

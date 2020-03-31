@@ -55,20 +55,14 @@ const MountainDetails = ({match, location}) => {
                 </Link>
             </button>
 
-            <div>
-                <CommentForm 
-                    mountain_id={mountain_id}
-                    currentUserObject={currentUserObject}
-                />
-            </div>
+            <CommentForm 
+                mountain_id={mountain_id}
+                currentUserObject={currentUserObject}
+            />
             <div>
                 <h3>Comments</h3>
                 {comments.map(comment => {
                     return (
-                        // <div key={comment.id}>
-                        //     <p>{comment.comment}</p>
-                        //     <p>{comment.username}</p>
-                        // </div>
                         <CommentCard 
                             key={comment.id}
                             comment={comment}

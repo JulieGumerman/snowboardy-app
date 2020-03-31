@@ -31,7 +31,8 @@ const CommentForm = ({currentUserObject, mountain_id}) => {
     }}
 >
     {({values, errors, touched, handleChange, handleSubmit, isSubmitting}) => (
-        <form onSubmit={handleSubmit}>
+        <form className="comment-form" onSubmit={handleSubmit}>
+        <h3>Leave a comment!</h3>
         <p>Title:</p>
         <input 
             name="title"
@@ -50,6 +51,7 @@ const CommentForm = ({currentUserObject, mountain_id}) => {
         <button 
             disabled={isSubmitting}
             type="submit"
+            className="comment-button"
         >
             Add comment to section.
         </button>

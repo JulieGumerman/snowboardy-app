@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Formik } from "formik";
 
 const Register = (props) => {
-
-    const [newUser, setNewUser ] = useState({ username: "", password: ""});
 
 
     return (
@@ -31,7 +29,6 @@ const Register = (props) => {
                     axios.post("https://snowboardy-life.herokuapp.com/api/register", values)
                         .then(user => {
                             props.history.push("/")
-                            console.log(values)
                         })
                         .catch(err => {
                             console.log(err)
@@ -39,7 +36,7 @@ const Register = (props) => {
                 }}
             >
                 {({values, errors, touched, handleChange, handleSubmit, isSubmitting}) => (
-                    <form className="log-reg-form" onSubmit={e => handleSubmit(e, newUser)}>
+                    <form className="log-reg-form" onSubmit={handleSubmit}>
                         <div className="form-holder">
                         <input 
                             // placeholder="username"

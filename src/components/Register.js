@@ -7,25 +7,6 @@ const Register = (props) => {
 
     const [newUser, setNewUser ] = useState({ username: "", password: ""});
 
-    // const handleChange = e => {
-    //     const {name, value} = e.target;
-    //     setNewUser({...newUser, [name]: value})
-
-    // }
-
-
-    // const handleSubmit = (e, creds) => {
-    //     e.preventDefault();
-    //     console.log("HandleSubmitFunctionWHeeee", creds);
-    //     axios.post("https://snowboardy-life.herokuapp.com/api/register", creds)
-    //         .then(user => {
-    //             props.history.push("/")
-    //             console.log(creds)
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
 
     return (
         <div className="content-wrapper">

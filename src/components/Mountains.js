@@ -7,7 +7,6 @@ const Mountains = (props) => {
     const [mountains, setMountains] = useState([]);
     const [newMountain, setNewMountain] = useState({mountain_name: "", nearest_town: "", description: ""});
 
-    //console.log("where state currently resides", props.history.location.state.user)
     let currentUser;
 
     if (props.history.location.state !== undefined) {
@@ -15,11 +14,6 @@ const Mountains = (props) => {
         localStorage.setItem("current-user", JSON.stringify(currentUser))
 
     }
-
-    //console.log("CURRENT USER FROM MNTNS COMPONENT", currentUser)
-
-    console.log("CHECK OUT PROPS.HISTORY", props.history)
-    //the get request
 
     const getMountains = () => {
         axiosWithAuth().get("mountains/")
@@ -33,7 +27,6 @@ const Mountains = (props) => {
         getMountains();
     }, []);
 
-    //the post request
 
     const handleChange = e => {
         const {name, value} = e.target;

@@ -4,8 +4,6 @@ import axios from "axios";
 import { Formik } from "formik";
 
 const Login = props => {
-    const [user, setUser] = useState({ username: "", password: ""})
-
 
     return (
         <div className="content-wrapper">
@@ -53,7 +51,11 @@ const Login = props => {
                             />
                             {errors.password && touched.password && errors.password}
                             </div>  
-                            <button className="log-reg-button" type="submit">Log in</button>
+                            <button 
+                                className="log-reg-button" 
+                                type="submit"
+                                disabled={isSubmitting}
+                            >Log in</button>
                         </form>   
                     )}
                 </Formik>  

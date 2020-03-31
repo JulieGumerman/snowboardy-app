@@ -7,10 +7,14 @@ const CommentForm = ({currentUserObject, mountain_id}) => {
     initialValues={{        
         mountain_id: mountain_id, 
         user_id: currentUserObject.id, 
+        title: '',
         comment: ''
     }}
     validate={values => {
         const errors = {}
+        if (!values.title) {
+            errors.title = "Required"
+        }
         if (!values.comment) {
             errors.comment = "Required"
         }
@@ -28,15 +32,25 @@ const CommentForm = ({currentUserObject, mountain_id}) => {
 >
     {({values, errors, touched, handleChange, handleSubmit, isSubmitting}) => (
         <form onSubmit={handleSubmit}>
+        <p>Title:</p>
         <input 
-            placeholder="Been here? Tell us!"
+            name="title"
+            type="text"
+            values={values.title}
+            onChange={handleChange}
+        />
+        <p>Comment:</p>
+        <input 
             name="comment"
             type="text"
             value={values.comment}
             onChange={handleChange}
         />
         {errors.comment && touched.comment && errors.comment}
-        <button type="submit">
+        <button 
+            disabled={isSubmitting}
+            type="submit"
+        >
             Add comment to section.
         </button>
         </form>

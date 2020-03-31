@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 import CommentForm from './CommentForm';
-import { Formik } from "formik";
+import CommentCard from './CommentCard';
 
 const MountainDetails = ({match, location}) => {
 
@@ -12,6 +12,8 @@ const MountainDetails = ({match, location}) => {
 
     const [mountain, setMountain] = useState({})
     const [comments, setComments] = useState([])
+
+    console.log("COMMENTY COMMENTY COMMENTS!!!", comments)
 
     const getMountainById = (id) => {
         axiosWithAuth().get(`/mountains/${id}`)
@@ -63,10 +65,14 @@ const MountainDetails = ({match, location}) => {
                 <h3>Comments</h3>
                 {comments.map(comment => {
                     return (
-                        <div key={comment.id}>
-                            <p>{comment.comment}</p>
-                            <p>{comment.username}</p>
-                        </div>
+                        // <div key={comment.id}>
+                        //     <p>{comment.comment}</p>
+                        //     <p>{comment.username}</p>
+                        // </div>
+                        <CommentCard 
+                            key={comment.id}
+                            comment={comment}
+                        />
                     )
                 })}
             </div>

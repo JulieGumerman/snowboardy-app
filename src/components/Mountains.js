@@ -7,8 +7,8 @@ const Mountains = (props) => {
     const [mountains, setMountains] = useState([]);
     const [newMountain, setNewMountain] = useState({mountain_name: "", nearest_town: "", description: ""});
 
-    //console.log("PROPS.HISTORY MOTHERFUCKERS!!!", props.history.location.state.user)
-    const currentuser = props.history.location.state.user
+    //console.log("where state currently resides", props.history.location.state.user)
+    const currentUser = props.history.location.state.user
 
     //the get request
 
@@ -85,7 +85,7 @@ const Mountains = (props) => {
                             key={mountain.id} 
                             mountain={mountain}
                             deleteMountain={deleteMountain}
-                            currentuser={currentuser}
+                            state={currentUser}
                         />
                     )})
                 }

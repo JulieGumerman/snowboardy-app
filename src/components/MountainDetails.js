@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
-const MountainDetails = ({match}) => {
+const MountainDetails = ({match, location}) => {
     const mountain_id = match.params.id;
+    console.log("What is in location now?", location)
 
     const [mountain, setMountain] = useState({})
     const [comments, setComments] = useState([])

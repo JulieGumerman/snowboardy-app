@@ -3,14 +3,17 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
 const MountainDetails = ({match, location}) => {
+
+    const currentUser = localStorage.getItem("current-user")
+    const currentUserObject = JSON.parse(currentUser)
     const mountain_id = match.params.id;
-    console.log("What is in location now?", location)
+    console.log("CURRENT USER OBJECT", currentUserObject.id)
 
     const [mountain, setMountain] = useState({})
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState({
         'mountain_id': mountain_id, 
-        'user_id': 0, //fix this!!!!! How do you access the user id???
+        'user_id': currentUserObject.id, //fix this!!!!! How do you access the user id???
         'comment': ''
     })
 

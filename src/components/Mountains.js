@@ -8,8 +8,17 @@ const Mountains = (props) => {
     const [newMountain, setNewMountain] = useState({mountain_name: "", nearest_town: "", description: ""});
 
     //console.log("where state currently resides", props.history.location.state.user)
-    const currentUser = props.history.location.state.user
+    let currentUser;
 
+    if (props.history.location.state !== undefined) {
+        currentUser = props.history.location.state.user
+        localStorage.setItem("current-user", JSON.stringify(currentUser))
+
+    }
+
+    //console.log("CURRENT USER FROM MNTNS COMPONENT", currentUser)
+
+    console.log("CHECK OUT PROPS.HISTORY", props.history)
     //the get request
 
     const getMountains = () => {
@@ -85,7 +94,7 @@ const Mountains = (props) => {
                             key={mountain.id} 
                             mountain={mountain}
                             deleteMountain={deleteMountain}
-                            state={currentUser}
+                            currentUser={currentUser}
                         />
                     )})
                 }

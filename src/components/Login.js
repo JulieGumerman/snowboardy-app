@@ -6,20 +6,6 @@ import { Formik } from "formik";
 const Login = props => {
     const [user, setUser] = useState({ username: "", password: ""})
 
-    // const handleChange = e => {
-    //     const { name, value } = e.target;
-    //     setUser({...user, [name]: value});
-    // }
-
-    // const handleSubmit = (e, creds) => {
-    //     e.preventDefault();
-    //     axios.post("https://snowboardy-life.herokuapp.com/api/login", creds)
-    //         .then(res => {
-    //             localStorage.setItem("token", res.data.token);
-    //             props.history.push("/mountains")
-    //         })
-    //         .catch(err => console.log(err))
-    // }
 
     return (
         <div className="content-wrapper">
@@ -68,7 +54,7 @@ const Login = props => {
                             />
                             {errors.password && touched.password && errors.password}
                             </div>  
-                            <button className="log-reg-button">Log in</button>
+                            <button className="log-reg-button" type="submit">Log in</button>
                         </form>   
                     )}
                 </Formik>  

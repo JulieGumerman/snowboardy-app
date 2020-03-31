@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const MountainCard = props => {
     console.log("CURRENT USER???", props.state)
-    let currentUser = props.state
     return (
         <div className="card">
             <h2>{props.mountain.mountain_name}</h2>
@@ -19,8 +18,12 @@ const MountainCard = props => {
                 <button className="see-more">
                     <Link 
                         className="see-more-link"
-                        to={`/mountains/${props.mountain.id}`}
-                        state={currentUser}
+                        // to={`/mountains/${props.mountain.id}`}
+                        // state={currentUser}
+                        to={{
+                            pathname: `/mountains/${props.mountain.id}`,
+                            state: props.currentUser
+                        }}
                     >
                         See more
                     </Link>

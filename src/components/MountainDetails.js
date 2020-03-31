@@ -4,9 +4,16 @@ import { Link } from "react-router-dom";
 
 const MountainDetails = ({match}) => {
 
+    const mountain_id = match.params.id;
+
     const [mountain, setMountain] = useState({})
     const [comments, setComments] = useState([])
-    const id = match.params.id;
+    const [newComment, setNewComment] = useState({
+        'mountain_id': mountain_id, 
+        'user_id': 0, //fix this!!!!! How do you access the user id???
+        'comment': ''
+    })
+
 
     const getMountainById = (id) => {
         axiosWithAuth().get(`/mountains/${id}`)
@@ -27,7 +34,8 @@ const MountainDetails = ({match}) => {
             })
     }
 
-    const postComment = (newComment) => {
+    const postComment = (e, newComment) => {
+        e.preventDefault()
         axiosWithAuth().post(`/comments`, newComment)
             .then(res => {
                 console.log("SUCCESS ON THE COMMENT POST")
@@ -41,8 +49,8 @@ const MountainDetails = ({match}) => {
 
 
     useEffect(() => {
-        getMountainById(id);
-        getCommentsForMountain(id);
+        getMountainById(mountain_id);
+        getCommentsForMountain(mountain_id);
     }, [])
 
     return (
@@ -66,7 +74,9 @@ const MountainDetails = ({match}) => {
                 <input 
                     placeholder="Been here? Tell us!"
                 />
-                <button>
+                <button
+                    onClick={e => postComment(e, newComment)}
+                >
                     Add comment to section.
                 </button>
             </div>

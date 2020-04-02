@@ -38,6 +38,7 @@ const Login = props => {
                             <div className="form-holder">
                             <input 
                                 name="username"
+                                placeholder="username"
                                 type="text"
                                 value={values.username}
                                 onChange={handleChange}
@@ -45,6 +46,7 @@ const Login = props => {
                             {errors.username && touched.username && errors.username}
                             <input 
                                 name="password"
+                                placeholder="password"
                                 type="password"
                                 value={values.password}
                                 onChange={handleChange}

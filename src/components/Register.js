@@ -41,6 +41,7 @@ const Register = (props) => {
                         <input 
                             // placeholder="username"
                             name="username"
+                            placeholder="username"
                             value={values.username}
                             type="text"
                             onChange={handleChange}
@@ -49,6 +50,7 @@ const Register = (props) => {
                         <input 
                             // placeholder="password"
                             type="password"
+                            placeholder="password"
                             name="password"
                             value={values.password}
                             onChange={handleChange}

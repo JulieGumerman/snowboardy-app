@@ -2,6 +2,11 @@
 $border: #747a76;
 $contrast: #de6f50;
 $text: #08090e;
+$background: #b3c0c9;
+
+
+$mobile: max-width 568px;
+$tablet: max-width 720px;
 
 /**********mixins************/
 @mixin button-style {
@@ -34,19 +39,29 @@ body {
   background-image: url("./images/powder-day.jpg");
   background-size: cover;  
   justify-content: center;
-  // align-items: center;
+  border: 1px red solid;
   color: $text;
-}
-.App {
-  text-align: center;
+  
+  @media screen and (max-width: 500px) {
+    background-image: none;
+    background-color: $background;
+  }
 
 }
+
+
+.App {
+  text-align: center;
+  border: 1px green solid;
+}
+
 
 .content-wrapper {
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  border: 1px purple solid;
 
 }
 

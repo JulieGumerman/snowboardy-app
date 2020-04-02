@@ -57,7 +57,9 @@ const Mountains = (props) => {
 
     return (
         <div className="content-wrapper">
+            <h3 className="header">Add a Mountain.</h3>
             <form className="mntn-form" onSubmit={(e) => handleSubmit(e, newMountain)}>
+                
                 <input 
                     placeholder="mountain name"
                     name="mountain_name"
@@ -78,8 +80,8 @@ const Mountains = (props) => {
                 />
                 <button className="mntn-button">Submit</button>
             </form>
-
             <div className="card-container">
+                
                 {
                     mountains.map(mountain => {
                     return(

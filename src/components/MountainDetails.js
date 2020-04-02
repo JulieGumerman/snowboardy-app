@@ -13,7 +13,6 @@ const MountainDetails = ({match, location}) => {
     const [mountain, setMountain] = useState({})
     const [comments, setComments] = useState([])
 
-    console.log("COMMENTY COMMENTY COMMENTS!!!", comments)
 
     const getMountainById = (id) => {
         axiosWithAuth().get(`/mountains/${id}`)
@@ -39,7 +38,8 @@ const MountainDetails = ({match, location}) => {
     useEffect(() => {
         getMountainById(mountain_id);
         getCommentsForMountain(mountain_id);
-    }, [])
+    }, [mountain_id])
+
 
     return (
         <div className="about-mountain">

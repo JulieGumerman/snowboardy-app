@@ -2,6 +2,11 @@
 $border: #747a76;
 $contrast: #de6f50;
 $text: #08090e;
+$background: #b3c0c9;
+
+
+$mobile: max-width 568px;
+$tablet: max-width 720px;
 
 /**********mixins************/
 @mixin button-style {
@@ -30,17 +35,23 @@ body {
   flex-direction: column;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
   background-image: url("./images/powder-day.jpg");
   background-size: cover;  
   justify-content: center;
-  // align-items: center;
   color: $text;
-}
-.App {
-  text-align: center;
+  
+  @media screen and (max-width: 500px) {
+    background-image: none;
+    background-color: $background;
+  }
 
 }
+
+
+.App {
+  text-align: center;
+}
+
 
 .content-wrapper {
   display: flex;
@@ -75,9 +86,13 @@ input {
     flex-wrap: wrap;
     width: 40%;
 
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+
     input {
-    width: 100%;
-  }  
+      width: 80%;
+    }  
   }
 
 
@@ -85,6 +100,7 @@ input {
   .log-reg-button {
     @include button-style;
     width: 30%;
+    margin-top: 10px;
   }
 
 
@@ -103,9 +119,18 @@ input {
   width: 90%;
   margin: 0 auto;
 
+
   input {
     width: 40%;
+
+    @media screen and (max-width: 768px) {
+      width: 90%;
+    }
   }
+    @media screen and (max-width: 768px) {
+      padding-bottom: 20px;
+      border-bottom: 5px dotted $border;
+    }  
 
   .mntn-button {
     @include button-style;
@@ -121,6 +146,10 @@ input {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 30px;
+  
+  .header {
+    width: 100%;
+  }
 }
 
 .card {
@@ -130,6 +159,8 @@ input {
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .button-box {
@@ -167,17 +198,29 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background:white;
   border-radius: 5px;
   border: 3px solid $border;
   width: 70%;
   padding: 30px;
   flex-direction: column;
+
+
+  @media screen and (max-width: 500px) {
+    background: $background;
+    width: 100vw;
+    padding-left: 0px;
+    padding-right: 0px;
+    border: none;
+  }
 }
 
 .mountain-details-page-link {
   height: 50px;
   padding: 5px;
+  margin-top: 10px;
+
+
 }
 
 
@@ -196,6 +239,11 @@ input {
     width: 80%
   }
 
+  @media screen and (max-width: 500px) {
+    width: 100vw;
+    
+  }
+
   .comment-button {
     @include card-button;
     align-items: center;
@@ -205,6 +253,10 @@ input {
     background: $contrast;
     color: white;
     margin-bottom: 20px;
+
+    @media screen and (max-width: 500px) {
+      height: 50px;
+    }
   }
 }
 

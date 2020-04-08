@@ -3,6 +3,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 import CommentForm from './CommentForm';
 import CommentCard from './CommentCard';
+import Logout from './Logout';
 
 const MountainDetails = ({match, location}) => {
 
@@ -70,6 +71,7 @@ const MountainDetails = ({match, location}) => {
                     )
                 })}
             </div>
+            <Logout/>
         </div>
     );
 }

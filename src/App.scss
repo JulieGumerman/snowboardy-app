@@ -298,3 +298,21 @@ input {
     font-style: italic;
   }
 }
+
+/*********************logout*************************/
+
+.logout {
+  color: white;
+  background: $text;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  font-size: 16px;
+  width: 100px;
+  margin: 20px;
+
+  .logout-link {
+    color: white;
+    text-decoration: none;
+  }
+}

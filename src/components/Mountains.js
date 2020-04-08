@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import MountainCard from "./MountainCard";
+import Logout from "./Logout";
 
 const Mountains = (props) => {
 
@@ -94,6 +95,7 @@ const Mountains = (props) => {
                     )})
                 }
             </div>
+            <Logout />
         </div>
     );
 }

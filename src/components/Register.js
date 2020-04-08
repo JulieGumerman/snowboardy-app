@@ -1,10 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Formik } from "formik";
+//import { useEffect } from "react";
 
 const Register = (props) => {
 
+    const [users, setUsers] = useState([])
+
+    const existingUsers = () => {
+        axios.get("https://snowboardy-life.herokuapp.com/api/users")
+            .then(thoseWhoUse => {
+                setUsers(thoseWhoUse.data)
+            })
+            .catch(error => console.log(error))
+    }
+  
+    console.log("WE ARE USERS", users)
+    useEffect(() => {
+        existingUsers();
+    }, [])
+
+    const usernames = users.map(user => user.username)
+
+    console.log(usernames)
+    
 
     return (
         <div className="content-wrapper">
@@ -15,6 +35,8 @@ const Register = (props) => {
                     const errors = {};
                     if (!values.username.length) {
                         errors.username = "Required"
+                    } else if (usernames.includes(values.username)){
+                        errors.username = "User already exists"
                     }
                     if (!values.password) {
                         errors.password = "Required"
@@ -55,7 +77,7 @@ const Register = (props) => {
                             value={values.password}
                             onChange={handleChange}
                         />
-                        {errors.username && touched.username && errors.username}
+                        {errors.password && touched.password && errors.password}
                         </div>
                         <button className="log-reg-button" type="submit" disabled={isSubmitting}>Register</button>
                     </form>

@@ -50,9 +50,11 @@ const Login = props => {
                                 localStorage.setItem("token", res.data.token);
                                 let userInfo = res.data
                                 props.history.push("/mountains", userInfo)
-
                             })
-                            .catch(err => console.log(err))
+                            .catch(err => {
+                                console.log(err);
+                                alert("Password not recognized. Please try logging in again.")
+                            })
                         ///                        
                     }}
                 >

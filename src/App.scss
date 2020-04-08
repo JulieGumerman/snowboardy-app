@@ -3,6 +3,7 @@ $border: #747a76;
 $contrast: #de6f50;
 $text: #08090e;
 $background: #b3c0c9;
+$wide-border: #30383f;
 
 
 $mobile: max-width 568px;
@@ -72,6 +73,30 @@ input {
 
 /*********login and register pages******/
 
+.form-container {
+  border: 5px $wide-border solid;
+  padding-bottom: 20px;
+  background-color: $background;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 5px;
+
+  @media screen and (min-width: 1200px) {
+    width: 40%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+
+
+  @media screen and (max-width: 500px) {
+    border: none;
+    width: 100%;
+  }
+
+}
+
 .log-reg-form {
   display: flex;
   justify-content: center;
@@ -85,6 +110,11 @@ input {
     align-items: center;
     flex-wrap: wrap;
     width: 40%;
+
+    @media screen and (max-width: 768px) {
+      width: 80%;
+    }
+  
 
     @media screen and (max-width: 500px) {
       width: 100%;

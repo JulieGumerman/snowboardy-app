@@ -1,9 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Formik } from "formik";
 
 const Login = props => {
+
+    const [users, setUsers] = useState([])
+
+    const existingUsers = () => {
+        axios.get("https://snowboardy-life.herokuapp.com/api/users")
+            .then(thoseWhoUse => {
+                setUsers(thoseWhoUse.data)
+            })
+            .catch(error => console.log(error))
+    }
+  
+    console.log("WE ARE USERS", users)
+    useEffect(() => {
+        existingUsers();
+    }, [])
+
+    const usernames = users.map(user => user.username)
+
+    console.log(usernames)
+
+    //console.log(usernames.includes("FML"))
 
     return (
         <div className="content-wrapper">
@@ -14,6 +35,8 @@ const Login = props => {
                         const errors = {};
                         if (!values.username) {
                             errors.username = "Required"
+                        } else if (!usernames.includes(values.username)){
+                            errors.username = "This username does not exist"
                         }
                         if(!values.password) {
                             errors.password = "Required"

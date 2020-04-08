@@ -17,8 +17,7 @@ const MountainCard = props => {
                 <button className="see-more">
                     <Link 
                         className="see-more-link"
-                        // to={`/mountains/${props.mountain.id}`}
-                        // state={currentUser}
+
                         to={{
                             pathname: `/mountains/${props.mountain.id}`,
                             state: props.currentUser

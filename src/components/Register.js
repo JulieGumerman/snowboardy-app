@@ -28,7 +28,8 @@ const Register = (props) => {
 
     return (
         <div className="content-wrapper">
-            Register here.
+            <div className="form-container">
+            <h3>Register here.</h3>
             <Formik
                 initialValues={{username: '', password: ''}}
                 validate={values => {
@@ -84,6 +85,7 @@ const Register = (props) => {
                 )}
             </Formik>    
             <div className="info-text">Already registered? Go <Link to="/">here</Link></div>
+        </div>
         </div>
     );
 }

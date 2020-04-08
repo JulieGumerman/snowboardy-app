@@ -28,7 +28,8 @@ const Login = props => {
 
     return (
         <div className="content-wrapper">
-            <h3>Log in.</h3>
+            <div className="form-container">
+            <h3 className="form-header">Log in.</h3>
                 <Formik
                     initialValues={{username: '', password: ''}}
                     validate={values => {
@@ -87,6 +88,7 @@ const Login = props => {
                     )}
                 </Formik>  
             <div className="info-text">No account? Sign up <Link to="/register">here</Link></div>
+        </div>
         </div>
     );
 }
